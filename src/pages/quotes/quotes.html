@@ -7,12 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>quotes</ion-title>
+    <ion-title>{{quoteGroup.category}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+<p *ngFor="let thisQuote of quoteGroup.quotes">{{thisQuote.text}}</p>
 </ion-content>
