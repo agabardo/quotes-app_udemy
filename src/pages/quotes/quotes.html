@@ -18,9 +18,9 @@
   <ion-card *ngFor="let thisQuote of quoteGroup.quotes; let i = index">
 
 
-      <ion-card-header>#{{i+1}}
-        <ion-card-title>
-          {{thisQuote.person}}
+      <ion-card-header>
+        <ion-card-title class="author">
+          #{{i+1}}-{{thisQuote.person}}
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
