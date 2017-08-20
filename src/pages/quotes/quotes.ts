@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
+import {QuotesService} from "../../services/quotes";
 
 /**
  * Generated class for the QuotesPage page.
@@ -18,7 +19,7 @@ export class QuotesPage {
 
   quoteGroup:{category : string, quotes : Quote[], icon : string};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private svcQuotes:QuotesService) {
 
   }
 
@@ -32,6 +33,7 @@ export class QuotesPage {
         text:"OK",
         handler: () => {
           console.log("Add the quote");
+          this.svcQuotes.add(selectedQuote);
         },
       },{
         text : "Cancel",

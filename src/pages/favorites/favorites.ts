@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Quote } from "../../data/quote.interface";
+import {QuotesService} from "../../services/quotes";
 
 /**
  * Generated class for the FavoritesPage page.
@@ -15,7 +17,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FavoritesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  favouriteQuotes : Quote[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private svcQuotes:QuotesService) {
+
+  }
+
+  ionViewWillEnter(){ //To be used when there is dynamic data to show.
+    this.favouriteQuotes = this.svcQuotes.get();
   }
 
   ionViewDidLoad() {
