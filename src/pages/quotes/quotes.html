@@ -20,7 +20,7 @@
 
       <ion-card-header>
         <ion-card-title class="author">
-          #{{i+1}}-{{thisQuote.person}}
+          #{{thisQuote.id}}-{{thisQuote.person}}
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
@@ -28,7 +28,7 @@
       </ion-card-content>
       <ion-row>
         <ion-col text-right>
-          <button small ion-button clear (click)="onAddToFavorite(thisQuote)" >Favourite</button>
+          <button small ion-button clear (click)="onAddToFavorite(thisQuote)" ><ion-icon name="heart"></ion-icon> Favourite</button>
         </ion-col>
       </ion-row>
   </ion-card>

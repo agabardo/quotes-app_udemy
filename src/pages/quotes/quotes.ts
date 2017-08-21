@@ -24,10 +24,10 @@ export class QuotesPage {
   }
 
   onAddToFavorite(selectedQuote:Quote){
-    console.log(selectedQuote);
+    //console.log(selectedQuote);
     const alert =  this.alertCtrl.create({
       title : "Add quote",
-      subTitle : selectedQuote.id,
+      subTitle : "Add quote " + selectedQuote.id,
       message : "Are you sure?",
       buttons : [{
         text:"OK",

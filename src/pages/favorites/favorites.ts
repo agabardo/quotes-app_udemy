@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
-import {QuotesService} from "../../services/quotes";
+import { QuotesService } from "../../services/quotes";
+import { AlertController} from "ionic-angular";
 
 /**
  * Generated class for the FavoritesPage page.
@@ -19,12 +20,35 @@ export class FavoritesPage {
 
   favouriteQuotes : Quote[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private svcQuotes:QuotesService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private svcQuotes:QuotesService) {
+
+  }
+
+  onRemoveFromFavorite(thisQuote:Quote){
+
+    const alert =  this.alertCtrl.create({
+      title : "Add quote",
+      subTitle : "Add quote " + thisQuote.id,
+      message : "Are you sure?",
+      buttons : [{
+        text:"OK",
+        handler: () => {
+          //console.log("Add the quote");
+          this.svcQuotes.remove(thisQuote);
+        },
+      },{
+        text : "Cancel",
+        role : "cancel",
+      }]
+
+    });
+    alert.present();
 
   }
 
   ionViewWillEnter(){ //To be used when there is dynamic data to show.
     this.favouriteQuotes = this.svcQuotes.get();
+
   }
 
   ionViewDidLoad() {
