@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
 import { QuotesService } from "../../services/quotes";
 import { AlertController} from "ionic-angular";
@@ -35,7 +35,9 @@ export class FavoritesPage {
         handler: () => {
           //console.log("Add the quote");
           this.svcQuotes.remove(thisQuote);
+          this.refreshPage();
         },
+        role : "update",
       },{
         text : "Cancel",
         role : "cancel",
@@ -43,7 +45,10 @@ export class FavoritesPage {
 
     });
     alert.present();
+  }
 
+  refreshPage() {
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
 
   ionViewWillEnter(){ //To be used when there is dynamic data to show.

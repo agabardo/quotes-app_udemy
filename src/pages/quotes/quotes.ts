@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
-import {QuotesService} from "../../services/quotes";
+import { QuotesService} from "../../services/quotes";
 
 /**
  * Generated class for the QuotesPage page.
