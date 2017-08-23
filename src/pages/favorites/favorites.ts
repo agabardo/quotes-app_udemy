@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
 import { QuotesService } from "../../services/quotes";
 import { AlertController} from "ionic-angular";
@@ -20,12 +20,17 @@ export class FavoritesPage {
 
   favouriteQuotes : Quote[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private svcQuotes:QuotesService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private alertCtrl: AlertController,
+    private svcQuotes:QuotesService,
+    private viewCtrl: ViewController,
+  ) {
 
   }
 
   onRemoveFromFavorite(thisQuote:Quote){
-
     const alert =  this.alertCtrl.create({
       title : "Add quote",
       subTitle : "Add quote " + thisQuote.id,
@@ -42,18 +47,17 @@ export class FavoritesPage {
         text : "Cancel",
         role : "cancel",
       }]
-
     });
     alert.present();
   }
 
   refreshPage() {
-    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    this.viewCtrl.getContent();
   }
 
   ionViewWillEnter(){ //To be used when there is dynamic data to show.
     this.favouriteQuotes = this.svcQuotes.get();
-
   }
 
   ionViewDidLoad() {
