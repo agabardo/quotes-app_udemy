@@ -18,4 +18,9 @@ export class QuotesService{
     return this.favouriteQuotes.slice();
   }
 
+  isQuoteFavorite(quote:Quote){
+    return this.favouriteQuotes.find((quoteEl:Quote)=> {
+      return quoteEl.id == quote.id;
+    });
+  }
 }

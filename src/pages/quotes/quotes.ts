@@ -44,6 +44,30 @@ export class QuotesPage {
     alert.present();
   }
 
+  removeFromFavourites(quote:Quote){
+    const alert =  this.alertCtrl.create({
+      title : "Remove quote",
+      subTitle : "Add quote " + quote.id,
+      message : "Are you sure?",
+      buttons : [{
+        text:"OK",
+        handler: () => {
+          console.log("Add the quote");
+          this.svcQuotes.remove(quote);
+        },
+      },{
+        text : "Cancel",
+        role : "cancel",
+      }]
+
+    });
+    alert.present();
+  }
+
+  isFavourite(quote:Quote){
+    return this.svcQuotes.isQuoteFavorite(quote);
+  }
+
   ngOnInit(){
     this.quoteGroup = this.navParams.data;
   }
