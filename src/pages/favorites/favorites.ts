@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams, ViewController} from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
 import { QuotesService } from "../../services/quotes";
 import { AlertController} from "ionic-angular";
@@ -26,6 +26,7 @@ export class FavoritesPage {
     private alertCtrl: AlertController,
     private svcQuotes:QuotesService,
     private viewCtrl: ViewController,
+    //private menuCtrl: MenuController,
   ) {
 
   }
@@ -63,5 +64,10 @@ export class FavoritesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FavoritesPage');
   }
+
+  /*
+  onOpenMenu(){
+    this.menuCtrl.open();
+  }*/
 
 }
