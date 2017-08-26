@@ -32,8 +32,8 @@ export class FavoritesPage {
 
   onRemoveFromFavorite(thisQuote:Quote){
     const alert =  this.alertCtrl.create({
-      title : "Add quote",
-      subTitle : "Add quote " + thisQuote.id,
+      title : "Remove quote",
+      subTitle : "Remove quote " + thisQuote.id,
       message : "Are you sure?",
       buttons : [{
         text:"OK",
@@ -52,8 +52,8 @@ export class FavoritesPage {
   }
 
   refreshPage() {
-    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
-    this.viewCtrl.getContent();
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    //this.viewCtrl.getContent();
   }
 
   ionViewWillEnter(){ //To be used when there is dynamic data to show.

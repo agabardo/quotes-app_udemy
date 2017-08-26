@@ -4,19 +4,15 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-card *ngFor="let thisQuote of favouriteQuotes; let i = index">
-    <ion-card-header>
-      <ion-card-title class="author">
-        #{{thisQuote.person}}
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
+<ion-list>
+  <ion-item-sliding *ngFor="let thisQuote of favouriteQuotes; let i = index">
+    <ion-item>
+      <h2>#{{thisQuote.person}}</h2>
       <p>{{thisQuote.text}}</p>
-    </ion-card-content>
-    <ion-row>
-      <ion-col text-right>
-        <button small ion-button clear (click)="onRemoveFromFavorite(thisQuote)" ><ion-icon name="heart-outline"></ion-icon>&nbsp; Remove from Favourites</button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+    </ion-item>
+    <ion-item-options>
+      <button small ion-button color="danger" (click)="onRemoveFromFavorite(thisQuote)" ><ion-icon name="trash"></ion-icon>&nbsp; Remove</button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
 </ion-content>
