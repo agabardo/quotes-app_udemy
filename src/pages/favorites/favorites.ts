@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams, ViewController} from 'ionic-angular';
+import { IonicPage, MenuController, NavController, NavParams, ViewController} from 'ionic-angular';
 import { Quote } from "../../data/quote.interface";
 import { QuotesService } from "../../services/quotes";
-import { AlertController} from "ionic-angular";
+import { AlertController } from "ionic-angular";
+import { SettingsService } from "../../services/settings";
 
 /**
  * Generated class for the FavoritesPage page.
@@ -26,6 +27,7 @@ export class FavoritesPage {
     private alertCtrl: AlertController,
     private svcQuotes:QuotesService,
     private viewCtrl: ViewController,
+    private settSrvc:SettingsService,
     //private menuCtrl: MenuController,
   ) {
 
@@ -50,6 +52,15 @@ export class FavoritesPage {
       }]
     });
     alert.present();
+  }
+
+  getBackground(){
+    if(this.settSrvc.getToggleStatus()){
+      return 'altQuoteBackground';
+    }
+    else{
+      return 'quoteBackground';
+    }
   }
 
   refreshPage() {

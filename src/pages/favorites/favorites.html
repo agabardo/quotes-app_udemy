@@ -11,7 +11,7 @@
 <ion-content padding>
 <ion-list>
   <ion-item-sliding *ngFor="let thisQuote of favouriteQuotes; let i = index">
-    <ion-item color="quoteBackground">
+    <ion-item [color]="getBackground()">
       <h2>#{{thisQuote.person}}</h2>
       <p>{{thisQuote.text}}</p>
     </ion-item>
